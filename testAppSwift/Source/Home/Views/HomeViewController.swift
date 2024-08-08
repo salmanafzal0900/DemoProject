@@ -35,7 +35,8 @@ class HomeViewController: UIViewController {
     
     func UISetup(){
      
-        tableView.register(UINib(nibName: "SongCell", bundle: nil), forCellReuseIdentifier: "SongCell")
+        tableView.register(UINib(nibName: NoDataCell.nibName, bundle: nil), forCellReuseIdentifier: NoDataCell.identifier)
+        tableView.register(UINib(nibName: SongCell.nibName, bundle: nil), forCellReuseIdentifier: SongCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
@@ -69,17 +70,21 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.filteredSongs.count
+        return viewModel.filteredSongs.isEmpty ? 1 : viewModel.filteredSongs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongCell
-        let song = viewModel.filteredSongs[indexPath.row]
         
+        if viewModel.filteredSongs.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.identifier, for: indexPath) as! NoDataCell
+            cell.lblTitle.text = "No data available. Try searching with a different artist name."
+                     return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: SongCell.identifier, for: indexPath) as! SongCell
+        let song = viewModel.filteredSongs[indexPath.row]
         cell.updateCell(title: song.trackName,
                         detail: song.artistName,
                         isPlaying: !(currentlyPlayingIndex == indexPath))
-
         return cell
     }
     
@@ -97,28 +102,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
     
+    // Optionally, you can adjust the height of the rows
+       func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return UITableView.automaticDimension
+       }
+    
     
 }
 // UISearchBarDelegate Methods
 
 
 extension HomeViewController: UISearchBarDelegate {
-    
-   // For Local Search
- /*   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            isSearching = false
-            viewModel.filteredSongs = viewModel.songs
-        } else {
-            isSearching = true
-            viewModel.filteredSongs = viewModel.songs.filter { song in
-                song.trackName.lowercased().contains(searchText.lowercased())
-            }
-        }
-        tableView.reloadData()
-        stopPlayback()
-    } */
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
