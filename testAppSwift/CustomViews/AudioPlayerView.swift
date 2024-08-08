@@ -151,4 +151,11 @@ class AudioPlayerView: UIView {
             updateButtonState()
         }
     }
+    
+    deinit {
+          // Remove observer to prevent memory leaks
+          playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
+      }
+    
+    
 }
