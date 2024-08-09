@@ -33,7 +33,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UISetup()
-        setupNavigationBar()
         viewModel.fetchMusicData(artist: "top hits")
     }
     
@@ -51,35 +50,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    private func setupNavigationBar() {
-        searchBar.backgroundImage = UIImage() 
-        // Set up the title label
-        titleLabel.text = "Musify"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        titleLabel.textColor = .white
 
-        // Set up the logo image
-        logoImageView.image = UIImage(named: "logo.app")
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Create a horizontal stack view to hold the logo and title
-        let stackView = UIStackView(arrangedSubviews: [logoImageView, titleLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 8 // Adjust spacing as needed
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Set the title view of the navigation item
-        self.navigationItem.titleView = stackView
-
-        // Set constraints for the logo image
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalToConstant: 40), // Adjust width as needed
-            logoImageView.heightAnchor.constraint(equalToConstant: 40) // Adjust height as needed
-        ])
-    }
       
      
     
