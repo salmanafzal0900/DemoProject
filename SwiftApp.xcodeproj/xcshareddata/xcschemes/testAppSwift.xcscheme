@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9CAB93912C611AF300CC3DC3"
-               BuildableName = "Musify.app"
-               BlueprintName = "Musify"
-               ReferencedContainer = "container:Musify.xcodeproj">
+               BuildableName = "SwiftApp.app"
+               BlueprintName = "SwiftApp"
+               ReferencedContainer = "container:SwiftApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CAB93912C611AF300CC3DC3"
-            BuildableName = "Musify.app"
-            BlueprintName = "Musify"
-            ReferencedContainer = "container:Musify.xcodeproj">
+            BuildableName = "SwiftApp.app"
+            BlueprintName = "SwiftApp"
+            ReferencedContainer = "container:SwiftApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CAB93912C611AF300CC3DC3"
-            BuildableName = "Musify.app"
-            BlueprintName = "Musify"
-            ReferencedContainer = "container:Musify.xcodeproj">
+            BuildableName = "SwiftApp.app"
+            BlueprintName = "SwiftApp"
+            ReferencedContainer = "container:SwiftApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

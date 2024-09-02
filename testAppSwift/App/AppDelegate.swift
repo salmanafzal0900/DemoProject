@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // Create and set the root view controller
-        let rootViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+//        let rootViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let rootViewController = DynamicHeightTableView.loadFromNib()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
